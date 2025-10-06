@@ -628,20 +628,3 @@ function CloudModal({ initialHousehold, initialPassphrase, onSave, onClose }:{
     </div>
   );
 }
-
-function SummaryCard({ title, value, variant, droppable, onDrop }:{
-  title: string; value: number; variant?: "default"|"income"|"savings"; droppable?: boolean; onDrop?: (e: React.DragEvent) => void;
-}) {
-  const base = "flex flex-col gap-1 rounded-2xl border p-4 shadow-sm select-none";
-  const styles = {
-    default: `${base} bg-white/70`,
-    income: `${base} bg-white/70`,
-    savings: `${base} bg-gradient-to-br from-[#f3e7e0] to-[#e7d2f5] border-transparent`,
-  } as const;
-  return (
-    <div className={styles[variant || "default"]} onDragOver={droppable ? (e)=>{e.preventDefault();} : undefined} onDrop={droppable && onDrop ? onDrop : undefined}>
-      <div className={`text-sm ${variant === "income" ? "text-emerald-700" : "text-gray-500"}`}>{title}</div>
-      <div className={`text-2xl font-semibold ${variant === "income" ? "text-emerald-700" : ""}`}>{fmtCurrency(value)}</div>
-    </div>
-  );
-}
