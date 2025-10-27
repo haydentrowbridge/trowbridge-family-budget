@@ -233,7 +233,6 @@ export default function App() {
   }, [monthTxns, incomeBucket.id, nonIncomeBuckets, activeMonthKey]);
 
   const unassigned = useMemo(() => monthTxns.filter((t) => t.bucketId === null), [monthTxns]);
-  const assigned = useMemo(() => monthTxns.filter((t) => t.bucketId !== null), [monthTxns]);
   const deleted = useMemo(() => state.txns.filter((t) => !!t.deleted && monthKeyFrom(t.date) === activeMonthKey), [state.txns, activeMonthKey]);
 
   // Pulse state per bucket
